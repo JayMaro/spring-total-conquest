@@ -11,6 +11,8 @@ import hello.core.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+// @Configuration이 없다면 싱글톤 형태로 동작하지 않는다
+// CGLIB이 바이트 코드 변환을 통해 AppConfig.class를 상속받아 싱글톤 형태로 만들어준다.
 @Configuration
 public class AppConfig {
 
