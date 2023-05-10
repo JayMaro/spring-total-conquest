@@ -1,5 +1,8 @@
 package hello.core.lifecycle;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 // InitializingBean, DisposableBean 스프링 의존적으로 사용됨
 // 이름 변경 불가
 // 외부 라이브러리 적용 불가
@@ -30,12 +33,14 @@ public class NetworkClient{
         System.out.println("close: " + url);
     }
 
+    @PostConstruct
     public void init() {
         System.out.println("NetworkClient.init");
         connect();
         call("초기화 연결 메세지");
     }
 
+    @PreDestroy
     public void close() {
         System.out.println("NetworkClient.close");
         disconnect();
