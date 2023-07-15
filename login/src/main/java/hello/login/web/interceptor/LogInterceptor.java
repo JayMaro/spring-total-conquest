@@ -39,7 +39,7 @@ public class LogInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        log.info("postHandle [{}]", modelAndView);
+        log.info("postHandle LogInterceptor");
     }
 
     @Override
@@ -47,6 +47,7 @@ public class LogInterceptor implements HandlerInterceptor {
         String requestURI = request.getRequestURI();
         String logId = (String) request.getAttribute(LOG_ID);
         log.info("RESPONSE [{}][{}][{}]", logId, requestURI, handler);
+        log.info("afterCompletion LogInterceptor");
         if (ex != null) {
             log.error("afterCompletion error!!", ex);
         }
